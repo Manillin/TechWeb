@@ -18,11 +18,22 @@ def elenca_params(request):
     return HttpResponse(response)
 
 # Es 1
-# def pari_dispari(request):
-#     if 'num' not in request.GET:
-#         return HttpResponse("Non hai inserito un numero")
-#     numero = int(request.GET['num'])
-#     if numero % 2 == 0:
-#         return HttpResponse(f"Il numero {request.GET['num']} è PARI")
-#     else:
-#         return HttpResponse(f"Il numero {request.GET['num']} è DISPARI")
+
+
+def pari_dispari(request):
+    if 'num' not in request.GET:
+        return HttpResponse("Non hai inserito un numero")
+    numero = int(request.GET['num'])
+    if numero % 2 == 0:
+        return HttpResponse(f"Il numero {request.GET['num']} è PARI")
+    else:
+        return HttpResponse(f"Il numero {request.GET['num']} è DISPARI")
+
+# Es 3
+
+
+def greet_user(request):
+    welcome_msg = '/welcome_'
+    stringa = str(request.path)
+    response = stringa[len(welcome_msg):-1]
+    return HttpResponse("Welcome user -> " + response)

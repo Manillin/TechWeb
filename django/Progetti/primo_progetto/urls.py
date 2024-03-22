@@ -16,14 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from views import homepage, elenca_params, pari_dispari
+from views import homepage, elenca_params, pari_dispari, greet_user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', homepage, name="homepage"),
     path('parametri/', elenca_params, name='params'),
     path('paridispari', pari_dispari, name='paridispari'),
-    # path('', homepage, name="homepage")
+    re_path(r'^welcome_[A-Za-z0-9]+\/', greet_user, name='greetuser'),
     re_path(r'^$|^/$|home/$', homepage, name='homepage')
 ]
 
