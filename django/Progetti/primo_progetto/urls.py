@@ -15,10 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from views import homepage
+from django.urls import path, re_path
+from views import homepage, elenca_params
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', homepage, name="homepage")
+    path('home/', homepage, name="homepage"),
+    path('parametri/', elenca_params, name='elencaparams'),
+    # path('', homepage, name="homepage")
+    re_path(r'^$|^/$|home/$', homepage, name='homepage')
 ]
+
+
+# es parametri -> assicurarsi che il parametro esista nel dizionario:
+
+# if param not in request.GET (che è il dizionario): return Httpsblablabla("erorre")
