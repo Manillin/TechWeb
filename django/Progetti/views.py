@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def homepage(request):
-    response = "Hello\n"
+    response = "Hello <br>, New Line"
     # print("REQUEST: ", str(request))
     # print(str(dir(request)))
 
