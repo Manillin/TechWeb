@@ -4,9 +4,9 @@ from django.http import HttpResponse
 
 
 def homepage(request):
-    response = "Hello <br>, New Line"
-    # print("REQUEST: ", str(request))
-    # print(str(dir(request)))
+    response = "Hello I'm: <br><br>"
+    print(type(request))
+    print(str(request))
 
     return HttpResponse(response)
 
@@ -37,3 +37,8 @@ def greet_user(request):
     stringa = str(request.path)
     response = stringa[len(welcome_msg):-1]
     return HttpResponse("Welcome user -> " + response)
+
+
+def type_enforce_params(request, nome, eta):
+    welcome_msg = f'Welcome {nome} <br> Risulti avere {eta} anni! <br> :)'
+    return HttpResponse(welcome_msg)

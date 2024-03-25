@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from views import homepage, elenca_params, pari_dispari, greet_user
+from views import homepage, elenca_params, pari_dispari, greet_user, type_enforce_params
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,10 +24,10 @@ urlpatterns = [
     path('parametri/', elenca_params, name='params'),
     path('paridispari', pari_dispari, name='paridispari'),
     re_path(r'^welcome_[A-Za-z0-9]+\/', greet_user, name='greetuser'),
-    re_path(r'^$|^/$|home/$', homepage, name='homepage')
+    re_path(r'^$|^/$|home/$', homepage, name='homepage'),
+    path('test/<str:nome>/<int:eta>', type_enforce_params, name='type_enforce')
 ]
 
 
 # es parametri -> assicurarsi che il parametro esista nel dizionario:
-
 # if param not in request.GET (che è il dizionario): return Httpsblablabla("erorre")
