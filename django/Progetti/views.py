@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 # Contiene il codice di backend -> detto "business logic"
 
@@ -42,3 +43,11 @@ def greet_user(request):
 def type_enforce_params(request, nome, eta):
     welcome_msg = f'Welcome {nome} <br> Risulti avere {eta} anni! <br> :)'
     return HttpResponse(welcome_msg)
+
+
+def hello_template(request):
+    from datetime import datetime
+    ctx = {'title': 'Hello Template',
+           'lista': [datetime.now(), datetime.today().strftime('%A'), datetime.today().strftime('%B')]}
+
+    return render(request, template_name="baseext.html", context=ctx)

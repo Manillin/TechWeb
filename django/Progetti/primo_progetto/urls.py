@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from views import homepage, elenca_params, pari_dispari, greet_user, type_enforce_params
+from views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,7 +25,8 @@ urlpatterns = [
     path('paridispari', pari_dispari, name='paridispari'),
     re_path(r'^welcome_[A-Za-z0-9]+\/', greet_user, name='greetuser'),
     re_path(r'^$|^/$|home/$', homepage, name='homepage'),
-    path('test/<str:nome>/<int:eta>', type_enforce_params, name='type_enforce')
+    path('test/<str:nome>/<int:eta>', type_enforce_params, name='type_enforce'),
+    path('hellotemplate/', hello_template, name='hellotemplate')
 ]
 
 
