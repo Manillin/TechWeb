@@ -4,3 +4,4 @@ Pipfile.lock
 .idea
 *.zip
 *.pyc
+.DS_Store
