@@ -5,3 +5,5 @@ Pipfile.lock
 *.zip
 *.pyc
 .DS_Store
+.pyc
+.cpyhon-3

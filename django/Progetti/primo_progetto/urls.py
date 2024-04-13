@@ -31,4 +31,4 @@ urlpatterns = [
 
 
 # es parametri -> assicurarsi che il parametro esista nel dizionario:
-# if param not in request.GET (che è il dizionario): return Httpsblablabla("erorre")
+# if param not in request.GET (che è il dizionario): return Httpsblablabla("errore")
