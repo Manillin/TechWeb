@@ -44,8 +44,8 @@ def type_enforce_params(request, nome, eta):
     welcome_msg = f'Welcome {nome} <br> Risulti avere {eta} anni! <br> :)'
     return HttpResponse(welcome_msg)
 
-# Template
 
+# Template
 
 def hello_template(request):
     from datetime import datetime

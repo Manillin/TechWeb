@@ -1,9 +1,5 @@
 {% extends "base.html" %} {% block title %} {{title}} {% endblock %} {% block
-content %}
-
-<!--
-    {{block.super}}
-    -->
+content %} {# {{block.super}} #}
 
 <h1>
   {% if user.is_authenticated %} Ciao, {{ user.username }} {% else %} Ciao,
@@ -11,7 +7,7 @@ content %}
 </h1>
 
 {% for i in lista %}
-
+<h1>CIOCCOLATA</h1>
 <p>{{ i }}</p>
 
-{% endfor %} {% endblock %}
+{% endfor %}
