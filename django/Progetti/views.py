@@ -56,3 +56,11 @@ def hello_template(request):
 
     template = "baseext.html"
     return render(request, template_name=template, context=ctx)
+
+
+# Static Resources
+
+def static_page(request):
+    return render(request,
+                  template_name="pwstatic.html",
+                  context={'title': 'Pagina con elementi statici'})
