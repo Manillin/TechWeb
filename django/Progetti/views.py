@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from datetime import datetime
 
 # Contiene il codice di backend -> detto "business logic"
 
@@ -48,8 +49,10 @@ def type_enforce_params(request, nome, eta):
 # Template
 
 def hello_template(request):
-    from datetime import datetime
+
     ctx = {'title': 'Hello Template',
+           'print': 'CIAO TEST',
            'lista': [datetime.now(), datetime.today().strftime('%A'), datetime.today().strftime('%B')]}
 
-    return render(request, template_name="baseext.html", context=ctx)
+    template = "baseext.html"
+    return render(request, template_name=template, context=ctx)

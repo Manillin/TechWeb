@@ -1,13 +1,23 @@
-{% extends "base.html" %} {% block title %} {{title}} {% endblock %} {% block
-content %} {# {{block.super}} #}
+{% extends "base.html" %}
 
-<h1>
-  {% if user.is_authenticated %} Ciao, {{ user.username }} {% else %} Ciao,
-  guest! {% endif %}
-</h1>
+{% block title %} {{title}} {% endblock %}
 
-{% for i in lista %}
-<h1>TEST</h1>
-<p>{{ i }}</p>
+{% block content %}
 
-{% endfor %}
+    {# {{block.super}} #}
+
+    <h1> 
+        {% if user.is_authenticated %}    
+            Ciao,  {{ user.username }}
+        {% else %}
+            Ciao, guest!
+        {% endif %} 
+    </h1>
+
+    {% for i in lista %}
+
+        <p>   {{ i }}  </p>
+
+    {% endfor %}
+
+{% endblock %}
