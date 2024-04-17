@@ -14,3 +14,6 @@ class Libro(models.Model):
         else:
             out += " in prestito dal " + str(self.data_prestito)
         return out
+
+    class Meta:
+        verbose_name_plural = "Libri"
