@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Libro
 from django.utils import timezone
@@ -44,6 +44,8 @@ def get_autore(request):
 
 
 def autore_path(request, autore):
+
+    print(f"\nStampa valori dizionario: {list(request.GET.values())} \n")
     templ = "gestione/listalibri.html"
     ctx = {
         'title': f"Libri dell'autore: {autore} ",
@@ -81,3 +83,69 @@ def crea_libro(request):
         'message': mg
     }
     return render(request=request, template_name=templ, context=ctx)
+
+
+def libro_handler(request, libro_da_modificare: Libro = None):
+    msg = ""
+    # ctx = {
+    #     'title': 'Errore modifica',
+    #     'libro': libro_da_modificare,
+    #     'message': 'Qualcosa andato storto -> ' + str(libro_da_modificare)
+    # }
+
+    title = "Elimina Libro"
+    templ = 'gestione/delmodlibro.html'
+
+    if libro_da_modificare == None:
+        if 'libro' in request.GET:
+            s = request.GET['libro']
+            s = s[:s.index('s')]
+            try:
+                l = Libro.objects.get(pk=int(s))
+                l.delete()
+            except Exception as E:
+                msg = "Cancellazione non riuscita: " + str(E)
+        ctx = {
+            'title': title,
+            'listalibri': Libro.objects.all(),
+            'message': msg
+        }
+    else:
+        title = 'Modifica Libro'
+        if 'autore' in request.GET and 'titolo' in request.GET:
+            aut = request.GET['autore']
+            titl = request.GET['titolo']
+            pag = 100
+            try:
+                pag = int(request.GET['pagine'])
+            except:
+                msg = "Pagine fallback a valore di default"
+
+            libro_da_modificare.autore = aut
+            libro_da_modificare.titolo = titl
+            libro_da_modificare.pagine = pag
+
+            try:
+                libro_da_modificare.save()
+                msg = "Aggiornamento Libro riusito! " + "??" + msg
+            except Exception as E:
+                msg = "Errore nella modifica del libro " + str(E)
+
+            ctx = {
+                'title': title,
+                'libro': libro_da_modificare,
+                'message': msg
+            }
+    return render(request=request, template_name=templ, context=ctx)
+
+
+def cancella_libro(request):
+    return libro_handler(request=request)
+
+
+def modifica_libro(request, titolo, autore):
+    libro = get_object_or_404(Libro, autore=autore, titolo=titolo)
+
+    print(f"\nStampa valori dizionario: {list(request.GET.values())} \n")
+
+    return libro_handler(request, libro_da_modificare=libro)
