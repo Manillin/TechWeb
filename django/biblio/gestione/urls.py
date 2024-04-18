@@ -20,5 +20,10 @@ from .views import *
 app_name = "gestione"
 
 urlpatterns = [
-    path("listalibri/", lista_libri, name="listalibri")
+    path("listalibri/", lista_libri, name="listalibri"),
+    # path("autore_spec/<str:author>/", filtra_autore_spec, name='filtraautore'), broken
+    path("autore/", get_autore, name='autoreget'),
+    path("autore/<str:autore>", autore_path, name='autorepath'),
+    path("mattoni/", mattoni, name='mattoni'),
+    path("crealibro/", crea_libro, name='crealibro')
 ]
