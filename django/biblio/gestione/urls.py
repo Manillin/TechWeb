@@ -29,5 +29,4 @@ urlpatterns = [
     path("cancellalibro", cancella_libro, name="cancellalibro"),
     path("modificalibro/<str:titolo>/<str:autore>",
          modifica_libro, name="modificalibro"),
-
 ]
