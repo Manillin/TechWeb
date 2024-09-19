@@ -16,15 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from initcmds import *
+from . import views
+
+app_name = 'gestione'
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('gestione/', include('gestione.urls')),
+    path('', views.benvenuto, name='benvenuto'),
 ]
-
-
-# funzioni gestione DB
-erase_db()
-init_db()
