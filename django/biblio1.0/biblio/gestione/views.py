@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Libro
+from django.utils import timezone
+
 # Create your views here.
 
 
@@ -61,3 +63,42 @@ def autore_param_path(request, autore):
            'listalibri': lista_filtrata}
 
     return render(request, template_name=templ, context=ctx)
+
+
+def crea_libro(request):
+
+    message = ''
+
+    template = 'gestione/crealibro.html'
+    ctx = {
+        "title": "Crea Autore",
+        "message": message
+    }
+
+    if 'autore' in request.GET and 'titolo' in request.GET:
+        aut = request.GET['autore']
+        tit = request.GET['titolo']
+        pag = 100
+
+        try:
+            pag = int(request.GET['pagine'])
+        except:
+            message = 'Pagine non valide, inserimento di pagine di default! (100)'
+
+        l = Libro()
+        l.autore = aut
+        l.titolo = tit
+        l.pagine = pag
+        l.data_prestito = timezone.now()
+
+        try:
+            l.save()
+            message = "Creazione del libro riuscita!" + message
+        except Exception as e:
+            message = f"Creazione libro fallita [errore: {str(e)}]"
+
+        ctx['message'] = message
+
+    # return render(request, template_name='gestione/crealibro.html',
+    #               context={"title": "Crea Autore", "message": message})
+    return render(request, template_name=template, context=ctx)
