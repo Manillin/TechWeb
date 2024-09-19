@@ -2,14 +2,20 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from datetime import datetime
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 # Contiene il codice di backend -> detto "business logic"
 
 
 def homepage(request):
     response = "Hello I'm: <br><br>"
-    print(type(request))
-    print(str(request))
+    # print(type(request))
+    # print(str(request))
 
+    if True:
+        logger.warning("Warning!")
     return HttpResponse(response)
 
 
@@ -17,6 +23,8 @@ def elenca_params(request):
     response = ""
     for k in request.GET:
         response += request.GET[k] + ""
+
+    print("response: " + response)
     return HttpResponse(response)
 
 # Es 1
@@ -42,7 +50,7 @@ def greet_user(request):
 
 
 def type_enforce_params(request, nome, eta):
-    welcome_msg = f'Welcome {nome} <br> Risulti avere {eta} anni! <br> :)'
+    welcome_msg = f'Welcome <h1> {nome} </h1> <br> Risulti avere {eta} anni! <br> :)'
     return HttpResponse(welcome_msg)
 
 

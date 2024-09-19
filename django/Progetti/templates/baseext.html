@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} {{title}} {% endblock %}
+{% block title %} {{title}} {% endblock %} {#title è una variabile di contesto#}
 
 {% block content %}
 
@@ -14,10 +14,13 @@
         {% endif %} 
     </h1>
 
-    {% for i in lista %}
+
+    {#programming logic dove lista è una variabile di contesto #}
+    {% for i in lista %} 
 
         <p>   {{ i }}  </p>
 
     {% endfor %}
+    
 
 {% endblock %}
