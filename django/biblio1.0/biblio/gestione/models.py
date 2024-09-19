@@ -15,3 +15,4 @@ class Libro(models.Model):
             out += " attualmente non in prestito"
         else:
             out += " in prestito dal " + str(self.data_prestito)
+        return out

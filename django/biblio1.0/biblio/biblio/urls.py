@@ -26,5 +26,5 @@ urlpatterns = [
 
 
 # funzioni gestione DB
-erase_db()
+# erase_db()
 init_db()

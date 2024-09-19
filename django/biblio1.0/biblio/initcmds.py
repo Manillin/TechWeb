@@ -33,7 +33,7 @@ def init_db():
                 l.pagine = libridict[k][i]
             else:
                 l.data_prestito = libridict[k][i]
-    l.save()
+        l.save()
 
     print("Dump DB:\n")
     time.sleep(0.4)

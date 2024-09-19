@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head %} {% endblock %}
+
+{% block content %}
+    <center>
+    <h1> {{title}} </h1>
+
+    {% if listalibri.count > 0 %}
+        <p> Ci sono: {{listalibri.count}} libri in questa bibliteca! </p>
+        <ul>
+        {% for l in listalibri %}
+
+            <li> {{l}} </li>
+
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p> Non ci sono libri in questa biblioteca! </p>
+    {% endif %}
+    
+    </center>
+
+{% endblock %}
