@@ -20,6 +20,7 @@ from .views import *
 
 app_name = 'gestione'
 
+# NOTA: È buona pratica mettere '/' dopo ogni URL per evitare 404 indesiderati!
 
 urlpatterns = [
     path('', benvenuto, name='benvenuto'),
@@ -27,5 +28,9 @@ urlpatterns = [
     path('mattoni/', mattoni, name='mattoni'),
     path('autore/', get_autore, name='get_autore'),
     path('autore/<str:autore>/', autore_param_path, name='autorepath'),
-    path('crealibro/', crea_libro, name='crealibro')
+    path('crealibro/', crea_libro, name='crealibro'),
+    path('cancellalibro/', cancella_libro, name='cancellalibro'),
+    path('modificalibro/<str:titolo>/<str:autore>/',
+         modifica_libro, name='modificalibro'),
+    path('prova/', prova, name='prova')
 ]

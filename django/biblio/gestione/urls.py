@@ -27,6 +27,7 @@ urlpatterns = [
     path("mattoni/", mattoni, name='mattoni'),
     path("crealibro/", crea_libro, name='crealibro'),
     path("cancellalibro", cancella_libro, name="cancellalibro"),
-    path("modificalibro/<str:titolo>/<str:autore>",
+    path("modificalibro/<str:titolo>/<str:autore>/",
          modifica_libro, name="modificalibro"),
+    # path('modificalibro', modifica_libro, name='modificalibro')
 ]
