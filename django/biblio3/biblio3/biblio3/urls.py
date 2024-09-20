@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from initcmds import *
 
 
 urlpatterns = [
@@ -23,3 +24,7 @@ urlpatterns = [
     path('gestione', include('gestione.urls'))
 
 ]
+
+# erase_db()
+init_db()
+# start_controllo_scadenza(3)
