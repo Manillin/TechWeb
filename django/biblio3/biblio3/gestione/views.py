@@ -38,7 +38,7 @@ def presta_libro(request, titolo, autore):
     except Exception as E:
         msg = "Errore nel prestito!" + str(E)
 
-    ctx = {"title": "Prestito di un Libro", "messqqe": msg}
+    ctx = {"title": "Prestito di un Libro", "message": msg}
 
     return render(request, template_name=tmpl, context=ctx)
 
