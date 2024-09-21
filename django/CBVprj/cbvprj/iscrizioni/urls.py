@@ -20,11 +20,16 @@ urlpatterns = [
     path("studenticonta/", views.ListaStudentiIscritti.as_view(),
          name="studentiiscritti"),
 
+
+    # CreateView:
     path("creastudente/", views.CreateStudenteView.as_view(), name="creastudente"),
     path("creainsegnamento/", views.CreateInsegnamentoView.as_view(),
          name="creainsegnamento"),
+
+    # DetailView:
     path("insegnamento/<pk>/",
          views.DetailInsegnamentoView.as_view(), name="insegnamento"),
+    # UpdateView:
     path("editinsegnamento/<pk>/",
          views.UpdateInsegnamentoView.as_view(), name="editinsegnamento"),
 
