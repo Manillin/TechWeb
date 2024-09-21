@@ -21,7 +21,7 @@ from initcmds import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('gestione', include('gestione.urls'))
+    path('gestione/', include('gestione.urls'))
 
 ]
 
