@@ -90,6 +90,7 @@ class UpdateInsegnamentoView(UpdateView):
     template_name = "iscrizioni/edit_insegnamento.html"
     fields = "__all__"
 
+    # @Override
     def get_success_url(self):
         pk = self.get_context_data()["object"].pk
         return reverse("iscrizioni:insegnamento", kwargs={'pk': pk})
@@ -155,6 +156,7 @@ def cerca_studenti(request):
         else:
             cognome = request.POST["surname"]
 
+        # fa redirect alla ListView sottostante fornendo i parametri
         return redirect("iscrizioni:studentecercato", name=nome, surname=cognome)
 
 

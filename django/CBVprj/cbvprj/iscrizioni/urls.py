@@ -38,7 +38,7 @@ urlpatterns = [
     path("cancellastudente/<pk>/",
          views.DeleteStudenteView.as_view(), name="cancellastudente"),
 
-
+    # Cerca studente by cognome
     path("studente/<str:surname>/",
          views.ListStudenteBySurname.as_view(), name="studente"),
 
