@@ -50,7 +50,7 @@ class SearchResultsList(ListView):
         sstring = self.request.resolver_match.kwargs["sstring"]
         where = self.request.resolver_match.kwargs["where"]
 
-        if "Questions" in where:
+        if "Question" in where:
             qq = Question.objects.filter(question_text__icontains=sstring)
         else:
             qc = Choice.objects.filter(choice_text__icontains=sstring)
